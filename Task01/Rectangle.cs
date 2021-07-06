@@ -13,6 +13,15 @@ namespace Task01
         double area;
         double perimeter;
 
+        public Rectangle()
+        {
+            width = 1;
+            height = 1;
+
+            AreaCalculator();
+            PerimeterCalculator();
+        }
+
         public Rectangle (double width, double height)
         {
             this.width = width;

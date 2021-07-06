@@ -30,6 +30,13 @@ namespace Task03
             name = $"Point {X}-{Y}";
         }
 
+        public Point(double xCoordinate, double yCoordinate, string name)
+        {
+            X = xCoordinate;
+            Y = yCoordinate;
+            this.name = name;
+        }
+
         public double X
         {
             get { return x; }
@@ -56,24 +63,49 @@ namespace Task03
         Point[] figurePoints;
         double perimeter;
         string name;
+        FigureType figureType;
 
         public Figure(params Point[] points)
         {
             figurePoints = points;
             PerimeterCalculator();
-        }        
+        }
 
-        string Name
+        public Figure(string name, params Point[] points)
+        {
+            figurePoints = points;
+            PerimeterCalculator();
+            Name = name;
+        }
+
+        public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        double Perimeter
+        public double Perimeter
         {
             get { return perimeter; }
-            set { perimeter = value; }
+            private set { perimeter = value; }
         }
+
+        //
+        public string GetFigureType()
+        {
+            FigureType ft;
+            Enum.TryParse(figurePoints.Length.ToString(), out ft);
+            return ft.ToString();
+        }
+
+        public void ShowPoints()
+        {
+            for(int i = 0; i < figurePoints.Length; i++)
+            {
+                Console.WriteLine($"point {figurePoints[i].Name} [x={figurePoints[i].X} - y={figurePoints[i].Y}]");
+            }
+        }
+
 
         double LengthSide(Point a, Point b)
         {
@@ -89,6 +121,13 @@ namespace Task03
         {
             Perimeter = 0;
 
+            if (figurePoints.Length < 2) return;
+            if (figurePoints.Length == 2)
+            {
+                Perimeter = LengthSide(figurePoints[0], figurePoints[1]); 
+                return;
+            }
+
             for(int i = 0; i<figurePoints.Length; i++)
             {
                 if(i < figurePoints.Length - 1)
@@ -103,6 +142,8 @@ namespace Task03
         }
 
     }
+
+
 
     public enum FigureType
     {
