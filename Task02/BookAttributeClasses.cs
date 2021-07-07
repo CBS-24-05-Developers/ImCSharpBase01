@@ -17,7 +17,7 @@ namespace Task02
 
         public void Show()
         {
-            Console.WriteLine(title);
+            Console.Write(title);
         }
     }
 
@@ -32,7 +32,7 @@ namespace Task02
 
         public void Show()
         {
-            Console.WriteLine(author);
+            Console.Write(author);
         }
     }
 
@@ -47,7 +47,7 @@ namespace Task02
 
         public void Show()
         {
-            Console.WriteLine(content);
+            Console.Write(content);
         }
     }
 }

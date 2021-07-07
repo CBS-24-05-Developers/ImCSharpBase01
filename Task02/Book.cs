@@ -18,5 +18,23 @@ namespace Task02
             bookAuthor = new Author(author);
             bookContent = new Content(content);
         }
+
+        public Title Title
+        {
+            get { return bookTitle; }
+            set { bookTitle = value; }
+        }
+
+        public Author Author
+        {
+            get { return bookAuthor; }
+            set { bookAuthor = value; }
+        }
+
+        public Content Content
+        {
+            get { return bookContent; }
+            set { bookContent = value; }
+        }
     }
 }
